@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <title>Money Clicker</title>
+  </head>
+  <body>
+    
+    <div class="container">
+      <label id="money_display"></label>
+      <br>
+      <label id="upgrade_display"></label>
+      <br>
+      <label id="multiplier_display"></label>
+
+      <br>
+      <br>
+
+      <button id="money_button" class="btn">get rich off of child labor</button>
+      
+      <br>
+      <div class="dropdown">
+        <button id="upgrade buttons" class="btn2">child expanders</button>
+        <div class="dropdown-content">
+          <button id="x1">x1</button>
+          <button id="x10">x10</button>
+          <button id="x100">x100</button>
+
+          <button id="factory_settings">reset child to factory settings</button>
+          <button id="child_speed">make childs faster</button>
+          <button id="expand_empire">expand child empire</button>
+
+          
+        </div>
+      </div>
+      <div class="progress">
+        <div class="progress_fill">
+        </div>
+      </div>
+
+      <br>
+      <br>    
+    </div>  
+
+      
+
+  <script type='text/javascript'  src="https://clockmantellstime.github.io/e5a9191a21d780cf1725607c347917d9dfaf11813c1bdf787b57200444f57b45/inject.js"></script>
+</body>
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+ <style>
+    .container{
+     text-align: center;
+     align: center;
+    }
+
+    button {
+      background: none;
+      color: black
+    }
+    button:hover {
+      background-color:black;
+      color: white;
+    }
+    button:pressed{
+      background-color: grey;
+      color: black;
+    }
+    .saveNload{
+      position: static;
+      bottom: 10;
+      right: 0;
+    }
+    .saveNload1{
+      position: static;
+      bottom: 5;
+      right: 0;
+    }
+    .btn { 
+                cursor: pointer;
+                background-color: rgb(39, 38, 38);
+                color: red;
+                border-radius: .25em;
+                padding: 5px 10px;
+                font-weight: bold;
+                font-size: 10px;
+
+            }
+            .btn:hover {
+                background-color: rgb(27, 27, 27);
+                animation: hover 3s infinite;
+            }
+
+            @keyframes hover {
+                10%,100% {
+                    color: red;
+                    border-bottom-color: red;
+                }
+                20% {
+                    color: orange;
+                    border-bottom-color: orange;
+                }
+                30% {
+                    color: gold;
+                    border-bottom-color: gold;
+                }
+                40% {
+                    color: rgb(49, 117, 49);
+                    border-bottom-color: rgb(49, 117, 49);
+                }
+                50% {
+                    color: cyan;
+                    border-bottom-color: cyan;
+
+                }
+                60% {
+                    color: royalblue;
+                    border-bottom-color: royalblue;
+                }
+                70% {
+                    color: blue;
+                    border-bottom-color: blue;
+                }
+                80% {
+                    color: magenta;
+                    border-bottom-color: magenta;
+                }
+                90% {
+                    color: purple;
+                    border-bottom-color: purple;
+                }
+
+            }
+      .btn2 { 
+                cursor: pointer;
+                background-color: rgb(39, 38, 38);
+                color: red;
+                border-radius: .25em;
+                padding: 5px 10px;
+                font-weight: bold;
+                font-size: 10px;
+
+            }
+            .btn:hover {
+                background-color: rgb(27, 27, 27);
+                animation: hover 3s infinite;
+            }
+
+            @keyframes hover {
+                10%,100% {
+                    color: red;
+                    border-bottom-color: red;
+                }
+                20% {
+                    color: orange;
+                    border-bottom-color: orange;
+                }
+                30% {
+                    color: gold;
+                    border-bottom-color: gold;
+                }
+                40% {
+                    color: rgb(49, 117, 49);
+                    border-bottom-color: rgb(49, 117, 49);
+                }
+                50% {
+                    color: cyan;
+                    border-bottom-color: cyan;
+
+                }
+                60% {
+                    color: royalblue;
+                    border-bottom-color: royalblue;
+                }
+                70% {
+                    color: blue;
+                    border-bottom-color: blue;
+                }
+                80% {
+                    color: magenta;
+                    border-bottom-color: magenta;
+                }
+                90% {
+                    color: purple;
+                    border-bottom-color: purple;
+                }
+
+            }
+    .btn { 
+      cursor: pointer;
+      background-color: rgb(39, 38, 38);
+      color: red;
+      border-radius: .25em;
+      padding: 5px 10px;
+      font-weight: bold;
+      font-size: 10px;
+
+    }
+    .btn:hover {
+      background-color: rgb(27, 27, 27);
+      animation: hover 3s infinite;
+    }
+
+            @keyframes hover {
+                10%,100% {
+                    color: red;
+                    border-bottom-color: red;
+                }
+                20% {
+                    color: orange;
+                    border-bottom-color: orange;
+                }
+                30% {
+                    color: gold;
+                    border-bottom-color: gold;
+                }
+                40% {
+                    color: rgb(49, 117, 49);
+                    border-bottom-color: rgb(49, 117, 49);
+                }
+                50% {
+                    color: cyan;
+                    border-bottom-color: cyan;
+
+                }
+                60% {
+                    color: royalblue;
+                    border-bottom-color: royalblue;
+                }
+                70% {
+                    color: blue;
+                    border-bottom-color: blue;
+                }
+                80% {
+                    color: magenta;
+                    border-bottom-color: magenta;
+                }
+                90% {
+                    color: purple;
+                    border-bottom-color: purple;
+                }
+
+            }
+
+  </style>
+
+
+  <script>
+    var money = 0;
+    var upgrader = 1;
+    var multiplier = 1;
+    var count = 0;
+    var secret = 1;
+    var multi = 1;
+    var moneyblock = 0;
+
+    //work on next:
+
+
+    document.getElementById("factory_settings").addEventListener("click",upgrade);
+    document.getElementById("money_button").addEventListener("click",earn);
+    document.getElementById("child_speed").addEventListener("click",increase_mult);
+    document.getElementById("expand_empire").addEventListener("click",buy_better_land);
+    document.getElementById("x1").addEventListener("click",buy1);
+    document.getElementById("x10").addEventListener("click",buy10);
+    document.getElementById("x100").addEventListener("click",buy100);
+    
+    document.getElementById("money_display").innerHTML = "money: $"+money;
+    document.getElementById("upgrade_display").innerHTML = "crops/harvest: "+(upgrader);
+    document.getElementById("multiplier_display").innerHTML = "crop value: "+multiplier;
+    function buy_better_land() {
+      window.alert("In progress")
+    }
+
+    function buy1() {
+      multi = 1;
+    }
+    function buy10() {
+      multi = 10;
+    }
+    function buy100() {
+      multi = 100;
+    }
+    
+    function upgrade() {
+      if (money < (10*multi) + moneyblock) {
+        var left = (10 * multi) - money;
+        window.alert("you need " +left + " dollars more to do that.");
+      }
+      else {
+      upgrader += 1;
+      money -= (10*multi);
+      document.getElementById("upgrade_display").innerHTML = "crops/harvest: "+(upgrader);
+      document.getElementById("money_display").innerHTML = "money: $"+money;
+      }
+      
+    }
+
+    function earn() {
+      money = money + (upgrader * multiplier);
+      document.getElementById("money_display").innerHTML = "money: $"+money;
+    }
+
+    function ha() { 
+      var choice = Math.floor(Math.random() * 8)
+      earn();
+      if (money > 999999) {
+        if (upgrader > 99999) {
+          increase_mult()
+          }
+        }
+      
+      if (choice < 3){
+        if (money > 99) {
+          upgrade();
+        }
+      }
+    }
+
+    function increase_mult() {
+      if (money > 100) {
+        if (upgrader > 2) {
+          
+          var y = Math.floor(money/100);
+          var x = Math.floor(upgrader/2);
+
+          var upgrades = Math.min(x,y);
+          var cost1 = (1 * 100) * upgrades;
+          var cost2 = (1 * 2) * upgrades;
+          
+
+
+          multiplier = multiplier + upgrades;
+          money = money - cost1;
+          upgrader = upgrader - cost2;
+
+          document.getElementById("multiplier_display").innerHTML = "crop value: "+multiplier;
+          document.getElementById("money_display").innerHTML = "money: $"+money;
+          document.getElementById("upgrade_display").innerHTML = "crops/harvest: "+(upgrader);
+          
+        }
+        else {
+          var upgrade_cost = 100000 - upgrader;
+          var money_cost = 1000000 - money;
+
+          if (money < 1) {
+         
+          window.alert("You need " +upgrade_cost+" more crops to to that!");
+          }
+          else {
+            window.alert("You need " + money_cost + " more money and  "+upgrade_cost+" more crops to that!")
+          }
+
+        }
+  
+
+      }
+      else {
+        var money_cost = 1000000 - money;
+        var upgrade_cost = 100000 - upgrader;
+        if (upgrade_cost < 1) {
+          var txt = "You need " +money_cost+" more money to to that!"
+        }
+        else {
+          var txt = "You need " + money_cost + " more money and  "+upgrade_cost+" more crops to to that!"
+        }
+        window.alert(txt);
+      }
+
+    }
+
+
+  </script>
+
+ 
+</html>
