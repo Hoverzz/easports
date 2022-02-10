@@ -1,18 +1,65 @@
 
+
 <!DOCTYPE html>
 <html>
   <head>
     <base target="_top">
     <title>Money Clicker</title>
+    <style>
+      body {
+        background-color: black;
+      }
+      .progress {
+        position: relative;
+        width: 210px;
+        height: 30px;
+        background: #9cbab4;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .progress__fill {
+        width: 0%;
+        height: 100%;
+        background: #009579;
+        transition: all 0.2s;
+        transition-duration: 3s;
+
+      }
+
+      .progress__text {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+        font: bold 14px "Quicksand", sans-serif;
+        color: #ffffff;
+      }
+      #money_display {
+        color: #ffffff
+      }
+      #upgrade_display {
+        color: #ffffff
+      }
+      #multiplier_display {
+        color: #ffffff
+      }
+      
+    </style>
   </head>
   <body>
+
+    <div class="progress">
+        <div class="progress__fill"></div>
+        <span class="progress__text">0%</span>
+    </div>
     
     <div class="container">
-      <label id="money_display"></label>
+      <label id="money_display">money: $0</label>
       <br>
-      <label id="upgrade_display"></label>
+      <label id="upgrade_display">upgrades: 0</label>
       <br>
-      <label id="multiplier_display"></label>
+      <label id="multiplier_display">multiplier: 0</label>
 
       <br>
       <br>
@@ -32,10 +79,6 @@
           <button id="expand_empire">expand child empire</button>
 
           
-        </div>
-      </div>
-      <div class="progress">
-        <div class="progress_fill">
         </div>
       </div>
 
@@ -272,6 +315,7 @@
     var secret = 1;
     var multi = 1;
     var moneyblock = 0;
+    const Progress1 = document.querySelector(".progress");
 
     //work on next:
 
@@ -283,10 +327,19 @@
     document.getElementById("x1").addEventListener("click",buy1);
     document.getElementById("x10").addEventListener("click",buy10);
     document.getElementById("x100").addEventListener("click",buy100);
+    //document.getElementById("progress__fill").addEventListener("click",updateProgressBar(Progress1, 100))
     
     document.getElementById("money_display").innerHTML = "money: $"+money;
     document.getElementById("upgrade_display").innerHTML = "crops/harvest: "+(upgrader);
     document.getElementById("multiplier_display").innerHTML = "crop value: "+multiplier;
+
+
+    function updateProgressBar(progressBar, value) {
+      value = Math.round(value);
+      progressBar.querySelector(".progress__fill").style.width = `${value}%`;
+      progressBar.querySelector(".progress__text").textContent = `${value}%`;
+    }
+
     function buy_better_land() {
       window.alert("In progress")
     }
@@ -307,7 +360,7 @@
         window.alert("you need " +left + " dollars more to do that.");
       }
       else {
-      upgrader += 1;
+      upgrader += 1 * multi;
       money -= (10*multi);
       document.getElementById("upgrade_display").innerHTML = "crops/harvest: "+(upgrader);
       document.getElementById("money_display").innerHTML = "money: $"+money;
@@ -323,11 +376,9 @@
     function ha() { 
       var choice = Math.floor(Math.random() * 8)
       earn();
-      if (money > 999999) {
-        if (upgrader > 99999) {
-          increase_mult()
-          }
-        }
+      if (money > 100 && upgrader > 10) {
+          increase_mult();
+      }
       
       if (choice < 3){
         if (money > 99) {
@@ -345,13 +396,11 @@
 
           var upgrades = Math.min(x,y);
           var cost1 = (1 * 100) * upgrades;
-          var cost2 = (1 * 2) * upgrades;
           
 
 
           multiplier = multiplier + upgrades;
           money = money - cost1;
-          upgrader = upgrader - cost2;
 
           document.getElementById("multiplier_display").innerHTML = "crop value: "+multiplier;
           document.getElementById("money_display").innerHTML = "money: $"+money;
