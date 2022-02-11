@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Panel</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/side-panel.css">
+
+        <link rel="stylesheet" id="themeStylesheetLink" href="css/themes/default.css">
+        <link rel="stylesheet" href="css/common.css">
+
+        <link href="css/styles.css" rel="stylesheet">
+        <script defer src="Scripts/script.js"></script>
+    </head>
+    <body>
+        <div class="wrapper side-panel-open">
+            
+            <button class="side-panel-toggle" type="button">
+              <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
+              <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
+            </button>
+            <div class="side-panel">
+                <button data-modal-target="#modal">Settings</button>
+                <div id="overlay"></div>
+            </div>
+          </div>
+
+          <div class="modal" id="modal">
+            <div class="modal-header">
+              <div class="title">Settings</div>
+              <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <select id="themeSelect">
+                    <option value="default">Theme: Light</option>
+                    <option value="dark">Theme: Dark</option>
+                    <option value="dark">Theme: Dark+</option>
+                    </select>
+            </div>
+          </div>
+
+          <script>
+
+            document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+                document.querySelector(".wrapper").classList.toggle("side-panel-open");
+            });
+
+            function initThemeSelector() {
+                const themeSelect = document.getElementById("themeSelect");
+                const themeStylesheetLink = document.getElementById("themeStylesheetLink");
+                console.log(localStorage.getItem("theme"))
+                const currentTheme = localStorage.getItem("theme") || "dark" || "dark+";
+
+                function activateTheme(themeName) {
+                    themeStylesheetLink.setAttribute("href", `css/themes/${themeName}.css`);
+
+                }
+
+                themeSelect.addEventListener("change", () => {
+                    activateTheme(themeSelect.value);
+                    localStorage.setItem("theme", themeSelect.value);
+                });
+
+
+                themeSelect.value = currentTheme;
+                activateTheme(currentTheme);
+            }
+
+        initThemeSelector();
+
+
+          </script>
+    </body>
+</html>
