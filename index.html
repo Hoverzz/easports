@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>MoneyMaker</title>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/side-panel.css">
+
+        <link rel="stylesheet" id="themeStylesheetLink" href="css/themes/default.css">
+        <link rel="stylesheet" href="css/common.css">
+
+        <link href="css/styles.css" rel="stylesheet">
+        <script defer src="Scripts/script.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@800&display=swap" rel="stylesheet">
+    </head>
+
+    <style>
+        .button {
+            display: flex;
+            height: 50px;
+            padding: 0;
+            background: #950000;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            overflow: hidden;
+            font-family: "Quicksand", sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #810000;
+        }
+
+        .button:active {
+            background: #6e0000;
+        }
+
+        .button__text,
+        .button__icon {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 24px;
+            color: #fff;
+            height: 100%;
+        }
+
+        .button__text {
+            font-family: 'Montserrat Alternates', sans-serif;
+        }
+
+        .button__icon {
+            font-size: 1.5em;
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+
+        .Settingsbutton {
+            display: flex;
+            width: 75px;
+            height: 50px;
+            padding: 0;
+            background: #700000;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            overflow: hidden;
+            font-family: "Quicksand", sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .Settingsbutton:hover {
+            background: #640000;
+        }
+
+        .Settingsbutton:active {
+            background: #500000;
+        }
+
+        .Settingsbutton__text,
+        .Settingsbutton__icon {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 24px;
+            color: #fff;
+            height: 100%;
+        }
+
+        .Settingsbutton__icon {
+            font-size: 1.5em;
+            background: rgba(0, 0, 0, 0.08);
+        }
+
+        .money_display {
+            font-family: "Quicksand", sans-serif;
+        }
+
+        .themeSelect {
+            border-radius: 5px;
+        }
+
+    </style>
+
+    <body>
+        <!--Side Bar-->
+        <div class="wrapper side-panel-open" id="side-panel">
+            <div class="main">
+                <!--Main Window-->
+
+                <label id="money_display" class="money_display"></label>
+
+                <br>
+                <br>
+
+                <button type="money_button" class="button">
+                    <span class="button__text">click</span>
+                    <span class="button__icon">
+                        <ion-icon name="cash-outline"></ion-icon>
+                    </span>
+                </button>
+
+                <br>
+
+                <button type="upgrade_button" class="button">
+                    <span class="button__text">upgrade</span>
+                    <span class="button__icon">
+                        <ion-icon name="caret-up-circle-outline"></ion-icon>
+                    </span>
+                </button>
+            </div>
+            <!--Side Panel Buttons-->
+            <button class="side-panel-toggle" type="button">
+              <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
+              <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
+            </button>
+            <!--Actual Side Panel-->
+            <div class="side-panel">
+                <button data-modal-target="#modal" type="Settingsbutton" class="Settingsbutton">
+                    <span class="Settingsbutton__icon">
+                        <ion-icon name="settings-outline"></ion-icon>
+                    </span>
+                  </button>
+                <div id="overlay"></div>
+            </div>
+          </div>
+        <!--Modal/Popup-->
+          <div class="modal" id="modal">
+            <div class="modal-header">
+              <div class="title">Settings</div>
+              <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!--Theme Selector-->
+                <select id="themeSelect" class="themeSelect">
+                    <option value="default">Theme: Light</option>
+                    <option value="dark">Theme: Dark</option>
+                    <option value="dark">Theme: Dark+</option>
+                    </select>
+            </div>
+          </div>
+          <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+          
+
+          <script>
+
+            // variables
+                var money = 0;
+                var upgrader = 1;
+
+            //Theme Selector
+                themeSelector()
+
+            //Side panel code
+            document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+                document.querySelector(".wrapper").classList.toggle("side-panel-open");
+            });
+
+
+            //document.getElementById("money_button").addEventListener("click",earn);
+            document.getElementById("money_display").innerHTML = "money: $"+money;
+
+            function earn() {
+                money += 1
+            }
+
+            //Theme Selection Code
+            function themeSelector() {
+                function initThemeSelector() {
+                    const themeSelect = document.getElementById("themeSelect");
+                    const themeStylesheetLink = document.getElementById("themeStylesheetLink");
+                    console.log(localStorage.getItem("theme"))
+                    const currentTheme = localStorage.getItem("theme") || "dark" || "dark+";
+
+                function activateTheme(themeName) {
+                    themeStylesheetLink.setAttribute("href", `css/themes/${themeName}.css`);
+
+                }
+
+                themeSelect.addEventListener("change", () => {
+                    activateTheme(themeSelect.value);
+                    localStorage.setItem("theme", themeSelect.value);
+                });
+
+
+                themeSelect.value = currentTheme;
+                activateTheme(currentTheme);
+                }
+
+                initThemeSelector()
+            }
+
+
+          </script>
+    </body>
+</html>
